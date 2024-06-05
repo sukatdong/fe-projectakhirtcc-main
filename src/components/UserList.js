@@ -11,13 +11,13 @@ const UserList = () => {
   }, []);
 
   const getUsers = async () => {
-    const response = await axios.get("https://backend-ze34kd7dlq-et.a.run.app/mahasiswa");
+    const response = await axios.get("https://cobalagi-2wy22ihikq-et.a.run.app/mahasiswa");
     setUser(response.data);
   };
 
   const deleteUser = async (id) => {
     try {
-      await axios.delete(`https://backend-ze34kd7dlq-et.a.run.app/mahasiswa/${id}`);
+      await axios.delete(`https://cobalagi-2wy22ihikq-et.a.run.app/mahasiswa/${id}`);
       getUsers();
     } catch (error) {
       console.log(error);

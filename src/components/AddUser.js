@@ -12,7 +12,7 @@ const AddUser = () => {
   const saveUser = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("https://backend-ze34kd7dlq-et.a.run.app/mahasiswa", {
+      await axios.post("https://cobalagi-2wy22ihikq-et.a.run.app/mahasiswa", {
         nama,
         jurusan,
         createdAt,

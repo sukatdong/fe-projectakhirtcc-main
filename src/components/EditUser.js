@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
 const EditUser = () => {
-  const [name, setNama] = useState("");
+  const [nama, setNama] = useState("");
   const [jurusan, setJurusan] = useState("");
   const [createdAt, setCreatedAt] = useState("");
   const navigate = useNavigate();
@@ -16,8 +16,8 @@ const EditUser = () => {
   const updateUser = async (e) => {
     e.preventDefault();
     try {
-      await axios.patch(`https://backend-ze34kd7dlq-et.a.run.app/mahasiswa/${id}`, {
-        name,
+      await axios.patch(`https://cobalagi-2wy22ihikq-et.a.run.app/mahasiswa/${id}`, {
+        nama,
         jurusan,
         createdAt,
       });
@@ -28,7 +28,7 @@ const EditUser = () => {
   };
 
   const getUserById = async () => {
-    const response = await axios.get(`https://backend-ze34kd7dlq-et.a.run.app/mahasiswa/${id}`);
+    const response = await axios.get(`https://cobalagi-2wy22ihikq-et.a.run.app/mahasiswa/${id}`);
     setNama(response.data.nama);
     setJurusan(response.data.jurusan);
     setCreatedAt(response.data.createdAt);
@@ -44,7 +44,7 @@ const EditUser = () => {
               <input
                 type="text"
                 className="input"
-                value={name}
+                value={nama}
                 onChange={(e) => setNama(e.target.value)}
                 placeholder="Name"
               />
