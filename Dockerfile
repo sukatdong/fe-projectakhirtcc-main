@@ -1,32 +1,26 @@
-# Base image with Node.js
-FROM node:14-alpine as build
+# Use Node.js version 14
+FROM node:14
 
-# Set the working directory in the container
+# Set working directory inside the container
 WORKDIR /app
 
-# Copy the package.json and package-lock.json files
+# Copy package.json and package-lock.json
 COPY package*.json ./
 
 # Install dependencies
-RUN npm ci --only=production
+RUN npm install --only=production
 
-# Copy the rest of the app's source code
+# Copy the rest of the application code
 COPY . .
 
-# Build the app
+# Build the application
 RUN npm run build
 
-# Production-ready image
-FROM node:14-alpine
-
-# Set the working directory in the container
-WORKDIR /app
-
-# Copy the built app from the build stage
-COPY --from=build /app/build .
-
-# Install a lightweight web server
+# Install serve to run the application
 RUN npm install -g serve
 
-# Set the command to start the server
-CMD ["serve", "-p", "8080", "-s", "."]
+# Expose the port the app runs on
+EXPOSE 8080
+
+# Command to run the application
+CMD ["serve", "-s", "build", "-l", "8080"]
